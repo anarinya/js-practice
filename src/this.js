@@ -5,12 +5,17 @@
 /* eslint-disable no-useless-constructor, no-unused-vars */
 
 class User {
-  constructor(options) {
+  constructor({ username, password }) {
     // set a username and password property on the user object that is created
+    this.username = username;
+    this.password = password;
   }
   // create a method on the User class called `checkPassword`
   // this method should take in a string and compare it to the object's password property
   // return `true` if they match, otherwise return `false`
+  checkPassword(givenPassword) {
+    return givenPassword === this.password;
+  }
 }
 
 /* eslint-enable no-useless-constructor */
@@ -23,6 +28,7 @@ const checkPassword = function comparePasswords(passwordToCompare) {
   // use `this` to access the object's `password` property.
   // do not modify this function's parameters
   // note that we use the `function` keyword and not `=>`
+  return passwordToCompare === this.password;
 };
 
 /* eslint-enable no-unused-vars */
@@ -30,7 +36,9 @@ const checkPassword = function comparePasswords(passwordToCompare) {
 // use .call, .apply, and .bind
 
 // .call
-
+checkPassword.call(me, 'whatever');
 // .apply
-
+checkPassword.apply(me, ['whatever']);
 // .bind
+checkPassword.bind(me, 'whatever')();
+
