@@ -8,7 +8,7 @@ const counter = () => {
   // newCounter(); // 1
   // newCounter(); // 2
   let count = 0;
-  return () => (++count);
+  return () => ++count;
 };
 
 const counterFactory = () => {
@@ -44,8 +44,8 @@ const cacheFunction = (cb) => {
   // `cb` should only ever be invoked once for a given set of arguments.
   const cache = {};
   return (arg) => {
-    if (Object.prototype.hasOwnProperty.call(cache, arg)) return cache[arg];
-    return cache[arg] = cb(arg);
+    if (!Object.prototype.hasOwnProperty.call(cache, arg)) cache[arg] = cb(arg);
+    return cache[arg];
   };
 };
 /* eslint-enable no-unused-vars */

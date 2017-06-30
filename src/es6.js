@@ -73,7 +73,7 @@ var argsToCb = function (cb) {
 
 var result = argsToCb(addArgs, 1, 2, 3, 4, 5); //result should be 15
 */
-const addArgs = (...args) => args.reduce((sum, n) => sum += n, 0);
+const addArgs = (...args) => args.reduce((sum, n) => sum + n, 0);
 const argsToCb = (cb, ...args) => cb(...args);
 const result = argsToCb(addArgs, 1, 2, 3, 4, 5);
 

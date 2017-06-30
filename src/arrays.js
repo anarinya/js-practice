@@ -28,7 +28,7 @@ const reduce = (elements, cb, memo) => {
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
   let sum = memo ? memo + elements[0] : elements[0];
   for (let i = 1, len = elements.length; i < len; i++) {
-    sum += elements[i];
+    sum = cb(sum, elements[i]);
   }
   return sum;
 };
